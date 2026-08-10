@@ -8,32 +8,25 @@
         --color-brand-600:  #2275ee;
 		--color-brand-700:	#1a5fdb;
 		--color-brand-900:	#1c448c;
-
         /* màu nhấn */
         --color-accent-500: #6a67ce;
-
         /* chữ chính */
 		--color-ink: #000000;
-
         /* chữ phụ */
         --color-muted: #6b7280;
-
         /* nền trang */
-        --color-surface: #eeeeee;
-
+        --color-surface: #fafafa;
         /* viền */
         --color-line: #d6dde3;
-
         /* phông tiêu đề */
 		--font-display:	"Nunito";
         /* phông nội dung */
 		--font-body: "Lato";
-
         /* bo góc thẻ */
 		--radius-card: 8px;
 }
 
-.btn	{	@apply	inline-flex	items-center	justify-center	gap-2	rounded-pill
+.btn	{	@apply	inline-flex	items-center	justify-center	gap-2	rounded-lg
 				px-5	py-2.5	text-sm	font-semibold transition-colors;	}
 .btn-primary	{	@apply	bg-brand-600	text-white	hover:bg-brand-700;	}
 /* dành cho lớp cơ sở của html */
@@ -49,10 +42,9 @@
         @apply font-display tracking-tight;
     }
 }
-
 @layer components{
     .section{
-        @apply mx-auto w-full max-w-6xl px-5 py-20 lg:py-28;
+        @apply mx-auto w-full max-w-6xl px-5 py-5 lg:py-28;
     }
     .eyebrow{
         @apply font-display text-xs font-semibold uppercase tracking-[0.18em] text-brand-600;
