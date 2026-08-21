@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng giá – Manfice</title>
+  <link rel="stylesheet" href="./dist/output.css">
+</head>
+
+<body class="bg-surface dark:bg-surface-dark text-ink dark:text-ink-invert">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-line bg-white/80 backdrop-blur dark:border-line-invert dark:bg-surface-dark/90">
+    <nav class="container flex items-center justify-between py-4">
+      <a href="./index.html" class="flex items-center gap-2.5">
+        <span class="grid h-9 w-9 place-items-center rounded-lg bg-brand-700 text-lg font-bold text-white">M</span>
+        <span class="text-xl font-extrabold">Manfice</span>
+      </a>
+      <ul class="hidden items-center gap-8 text-sm font-medium lg:flex">
+        <li><a href="./index.html" class="hover:text-brand-700">Trang chủ</a></li>
+        <li><a href="./pricing.html" class="text-brand-700 font-semibold">Bảng giá</a></li>
+        <li><a href="./contact.html" class="hover:text-brand-700">Liên hệ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container py-16">
+
+    <!-- HERO -->
+    <section class="text-center mb-16">
+      <h1 class="text-4xl font-extrabold mb-4">Bảng giá Manfice</h1>
+      <p class="text-muted dark:text-muted-dark max-w-xl mx-auto">
+        Chọn gói phù hợp với doanh nghiệp của bạn. Không chi phí ẩn, không ràng buộc.
+      </p>
+    </section>
+
+    <!-- PRICING CARDS -->
+    <section class="grid gap-8 md:grid-cols-3 mb-20">
+
+      <div class="card text-center">
+        <h3 class="text-xl font-bold mb-2">Starter</h3>
+        <p class="text-muted dark:text-muted-dark mb-4">Phù hợp doanh nghiệp nhỏ</p>
+        <p class="text-4xl font-extrabold mb-4">199k<span class="text-base font-medium">/tháng</span></p>
+        <button class="btn btn-primary w-full">Dùng thử</button>
+      </div>
+
+      <div class="card text-center border-brand-700">
+        <h3 class="text-xl font-bold mb-2">Pro</h3>
+        <p class="text-muted dark:text-muted-dark mb-4">Đầy đủ tính năng</p>
+        <p class="text-4xl font-extrabold mb-4">499k<span class="text-base font-medium">/tháng</span></p>
+        <button class="btn btn-primary w-full">Chọn gói</button>
+      </div>
+
+      <div class="card text-center">
+        <h3 class="text-xl font-bold mb-2">Enterprise</h3>
+        <p class="text-muted dark:text-muted-dark mb-4">Cho doanh nghiệp lớn</p>
+        <p class="text-4xl font-extrabold mb-4">Liên hệ</p>
+        <button class="btn btn-ghost w-full">Liên hệ tư vấn</button>
+      </div>
+
+    </section>
+
+    <!-- FEATURE TABLE -->
+    <section class="mb-20">
+      <h2 class="text-2xl font-bold mb-6">So sánh tính năng</h2>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full border border-line dark:border-line-invert text-sm">
+          <thead class="bg-surface-alt dark:bg-surface-alt-dark">
+            <tr>
+              <th class="p-3 text-left">Tính năng</th>
+              <th class="p-3 text-center">Starter</th>
+              <th class="p-3 text-center">Pro</th>
+              <th class="p-3 text-center">Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-line dark:border-line-invert">
+              <td class="p-3">Quản lý nhân sự</td>
+              <td class="p-3 text-center">✔</td>
+              <td class="p-3 text-center">✔</td>
+              <td class="p-3 text-center">✔</td>
+            </tr>
+            <tr class="border-t border-line dark:border-line-invert">
+              <td class="p-3">Chấm công</td>
+              <td class="p-3 text-center">✔</td>
+              <td class="p-3 text-center">✔</td>
+              <td class="p-3 text-center">✔</td>
+            </tr>
+            <tr class="border-t border-line dark:border-line-invert">
+              <td class="p-3">Tính lương tự động</td>
+              <td class="p-3 text-center">✖</td>
+              <td class="p-3 text-center">✔</td>
+              <td class="p-3 text-center">✔</td>
+            </tr>
+            <tr class="border-t border-line dark:border-line-invert">
+              <td class="p-3">Báo cáo nâng cao</td>
+              <td class="p-3 text-center">✖</td>
+              <td class="p-3 text-center">✔</td>
+              <td class="p-3 text-center">✔</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-bold mb-6">Câu hỏi thường gặp</h2>
+
+      <div class="card mb-4">
+        <h3 class="font-semibold mb-2">Tôi có thể hủy gói bất kỳ lúc nào không?</h3>
+        <p class="text-muted dark:text-muted-dark">Có. Bạn có thể hủy bất kỳ lúc nào mà không bị tính phí thêm.</p>
+      </div>
+
+      <div class="card mb-4">
+        <h3 class="font-semibold mb-2">Có phí cài đặt không?</h3>
+        <p class="text-muted dark:text-muted-dark">Không. Manfice không thu phí cài đặt.</p>
+      </div>
+
+      <div class="card">
+        <h3 class="font-semibold mb-2">Có hỗ trợ doanh nghiệp lớn không?</h3>
+        <p class="text-muted dark:text-muted-dark">Có. Gói Enterprise được thiết kế riêng cho doanh nghiệp lớn.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-line dark:border-line-invert py-8 text-center text-sm text-muted dark:text-muted-dark">
+    © 2026 Manfice. All rights reserved.
+  </footer>
+
+</body>
+</html>

@@ -49,15 +49,19 @@
     --default-mono-font-family: var(--font-mono);
     --color-brand-50: #EAF4FF;
     --color-brand-300: #91CFFF;
-    --color-brand-500: #3894F9;
     --color-brand-600: #2275EE;
     --color-brand-700: #1A5FDB;
     --color-brand-900: #1C448C;
     --color-accent-500: #6A67CE;
-    --color-ink: #000000;
-    --color-muted: #D1D5DB;
-    --color-surface-alt: #F2F5F9;
-    --color-line: #D6DDE3;
+    --color-ink: #12211d;
+    --color-ink-invert: #eaf2ee;
+    --color-muted: #6b7280;
+    --color-surface: #ffffff;
+    --color-surface-dark: #0e1c19;
+    --color-surface-alt: #f2f5f9;
+    --color-surface-alt-dark: #162a25;
+    --color-line: #d6dde3;
+    --color-line-invert: #29443d;
     --font-display: "Nunito", sans-serif;
     --font-body: "Lato", sans-serif;
     --radius-card: 0.875rem;
@@ -465,9 +469,6 @@
   .bg-brand-900 {
     background-color: var(--color-brand-900);
   }
-  .bg-line {
-    background-color: var(--color-line);
-  }
   .bg-surface-alt {
     background-color: var(--color-surface-alt);
   }
@@ -572,7 +573,7 @@
     color: var(--color-ink);
   }
   .text-ink\/80 {
-    color: color-mix(in srgb, #000000 80%, transparent);
+    color: color-mix(in srgb, #12211d 80%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       color: color-mix(in oklab, var(--color-ink) 80%, transparent);
     }
@@ -634,15 +635,13 @@
       line-height: var(--tw-leading, var(--text-5xl--line-height));
     }
   }
-  @media (width >= 48rem) {
-    .md\:flex {
+  @media (width >= 64rem) {
+    .lg\:flex {
       display: flex;
     }
-    .md\:hidden {
+    .lg\:hidden {
       display: none;
     }
-  }
-  @media (width >= 64rem) {
     .lg\:inline-flex {
       display: inline-flex;
     }
@@ -663,12 +662,70 @@
       line-height: var(--tw-leading, var(--text-6xl--line-height));
     }
   }
+  @media (prefers-color-scheme: dark) {
+    .dark\:border-line-invert {
+      border-color: var(--color-line-invert);
+    }
+    .dark\:bg-brand-900 {
+      background-color: var(--color-brand-900);
+    }
+    .dark\:bg-brand-900\/40 {
+      background-color: color-mix(in srgb, #1C448C 40%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .dark\:bg-brand-900\/40 {
+        background-color: color-mix(in oklab, var(--color-brand-900) 40%, transparent);
+      }
+    }
+    .dark\:bg-surface-alt-dark {
+      background-color: var(--color-surface-alt-dark);
+    }
+    .dark\:bg-surface-dark\/90 {
+      background-color: color-mix(in srgb, #0e1c19 90%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .dark\:bg-surface-dark\/90 {
+        background-color: color-mix(in oklab, var(--color-surface-dark) 90%, transparent);
+      }
+    }
+    .dark\:text-brand-50 {
+      color: var(--color-brand-50);
+    }
+    .dark\:text-brand-300 {
+      color: var(--color-brand-300);
+    }
+    .dark\:text-ink-invert {
+      color: var(--color-ink-invert);
+    }
+    .dark\:text-ink-invert\/80 {
+      color: color-mix(in srgb, #eaf2ee 80%, transparent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .dark\:text-ink-invert\/80 {
+        color: color-mix(in oklab, var(--color-ink-invert) 80%, transparent);
+      }
+    }
+    @media (hover: hover) {
+      .dark\:hover\:bg-surface-alt-dark:hover {
+        background-color: var(--color-surface-alt-dark);
+      }
+      .dark\:hover\:text-brand-300:hover {
+        color: var(--color-brand-300);
+      }
+    }
+  }
 }
 @layer base {
   body {
     font-family: var(--font-body);
     color: var(--color-ink);
-    background-color: #fff;
+    background-color: var(--color-surface);
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-surface-dark);
+    }
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-ink-invert);
+    }
   }
   h1, h2, h3 {
     font-family: var(--font-display);
@@ -713,6 +770,19 @@
         background-color: var(--color-surface-alt);
       }
     }
+    @media (prefers-color-scheme: dark) {
+      border-color: var(--color-line-invert);
+    }
+    @media (prefers-color-scheme: dark) {
+      color: var(--color-ink-invert);
+    }
+    @media (prefers-color-scheme: dark) {
+      &:hover {
+        @media (hover: hover) {
+          background-color: var(--color-surface-alt-dark);
+        }
+      }
+    }
   }
   .btn-lg {
     padding-inline: calc(var(--spacing) * 7);
@@ -725,8 +795,14 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
     border-color: var(--color-line);
-    background-color: var(--color-white);
+    background-color: var(--color-surface);
     padding: calc(var(--spacing) * 6);
+    @media (prefers-color-scheme: dark) {
+      border-color: var(--color-line-invert);
+    }
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-surface-dark);
+    }
   }
   .badge {
     border-radius: var(--radius-pill);
@@ -753,10 +829,16 @@
     border-style: var(--tw-border-style);
     border-width: 1px;
     border-color: var(--color-line);
-    background-color: var(--color-white);
+    background-color: var(--color-surface);
     padding: calc(var(--spacing) * 6);
     --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    @media (prefers-color-scheme: dark) {
+      border-color: var(--color-line-invert);
+    }
+    @media (prefers-color-scheme: dark) {
+      background-color: var(--color-surface-dark);
+    }
   }
   .ticket::after {
     content: "";
@@ -765,9 +847,12 @@
     right: 0;
     bottom: -8px;
     height: 16px;
-    background-image: radial-gradient(circle at 6px 0, transparent 6px, white 6px);
+    background-image: radial-gradient(circle at 6px 0, transparent 6px, var(--color-surface) 6px);
     background-size: 12px 12px;
     background-repeat: repeat-x;
+  }
+  .dark .ticket::after {
+    background-image: radial-gradient( circle at 6px 0, transparent 6px, var(--color-surface-dark) 6px );
   }
 }
 @property --tw-divide-y-reverse {

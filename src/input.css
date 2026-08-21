@@ -1,4 +1,10 @@
 @import "tailwindcss";
+/* Đã khai báo từ buổi 1 — bật biến thể dark bằng class="dark" trên <html> hoặc cha bất kỳ
+@custom-variant dark (&:where(.dark, .dark *)); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @theme {
   /* ===== Màu thương hiệu — Manfice (phần mềm quản lý nhân sự) ===== */
@@ -39,7 +45,7 @@
     font-family: var(--font-body);
     color: var(--color-ink);
     background-color: var(--color-surface);
-  @apply dark: text-ink-invert dark:bg-surface-dark;
+  @apply dark:text-ink-invert dark:bg-surface-dark;
   }
 
   h1, h2, h3 {
@@ -56,19 +62,19 @@
                   dark:border-line-invert dark:text-ink-invert dark:hover:bg-surface-alt-dark; }
   .btn-lg { @apply px-7 py-3.5 text-base; }
 
-  .card { @apply rounded-card border border-line bg-white p-6
-             dark:border-line-invert dark:bg-surface-dark; }
+  .card { @apply rounded-card border border-line bg-surface p-6
+         dark:border-line-invert dark:bg-surface-dark; }
   .badge { @apply rounded-pill px-3 py-1 text-xs font-semibold; }
   .eyebrow { @apply text-xs font-semibold uppercase tracking-widest text-brand-700; }
 
-  .ticket { @apply relative rounded-card border border-line bg-white p-6 shadow-xl
+  .ticket { @apply relative rounded-card border border-line bg-surface p-6 shadow-xl
               dark:border-line-invert dark:bg-surface-dark; }
   .ticket::after {
     content: "";
     position: absolute;
     left: 0; right: 0; bottom: -8px;
     height: 16px;
-    background-image: radial-gradient(circle at 6px 0, transparent 6px, white 6px);
+    background-image: radial-gradient(circle at 6px 0, transparent 6px, var(--color-surface) 6px);
     background-size: 12px 12px;
     background-repeat: repeat-x;
   }
