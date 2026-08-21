@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/2551050121/tkw_2551050121_lan#readme",
   "dependencies": {
-    "@tailwindcss/cli": "^4.3.3",
+    "@tailwindcss/cli": "^4.3.3"
+  },
+  "devDependencies": {
     "tailwindcss": "^4.3.3"
   }
 }

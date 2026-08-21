@@ -40,7 +40,6 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
-    --tracking-tight: -0.025em;
     --tracking-widest: 0.1em;
     --leading-tight: 1.25;
     --radius-lg: 0.5rem;
@@ -57,7 +56,6 @@
     --color-accent-500: #6A67CE;
     --color-ink: #000000;
     --color-muted: #D1D5DB;
-    --color-surface: #FAFAFA;
     --color-surface-alt: #F2F5F9;
     --color-line: #D6DDE3;
     --font-display: "Nunito", sans-serif;
@@ -437,6 +435,9 @@
   .border-line {
     border-color: var(--color-line);
   }
+  .border-transparent {
+    border-color: transparent;
+  }
   .border-white {
     border-color: var(--color-white);
   }
@@ -445,6 +446,12 @@
   }
   .bg-brand-50 {
     background-color: var(--color-brand-50);
+  }
+  .bg-brand-300\/80 {
+    background-color: color-mix(in srgb, #91CFFF 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-brand-300) 80%, transparent);
+    }
   }
   .bg-brand-700 {
     background-color: var(--color-brand-700);
@@ -463,6 +470,18 @@
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-white) 80%, transparent);
     }
+  }
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-6 {
+    padding-inline: calc(var(--spacing) * 6);
+  }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
@@ -534,6 +553,9 @@
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
   }
+  .text-brand-500 {
+    color: var(--color-brand-500);
+  }
   .text-brand-600 {
     color: var(--color-brand-600);
   }
@@ -576,7 +598,25 @@
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
     backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
   @media (hover: hover) {
+    .hover\:bg-brand-900:hover {
+      background-color: var(--color-brand-900);
+    }
+    .hover\:text-brand-500:hover {
+      color: var(--color-brand-500);
+    }
+    .hover\:text-brand-600:hover {
+      color: var(--color-brand-600);
+    }
     .hover\:text-brand-700:hover {
       color: var(--color-brand-700);
     }
@@ -606,10 +646,15 @@
       line-height: var(--tw-leading, var(--text-5xl--line-height));
     }
   }
-  @media (width >= 64rem) {
-    .lg\:flex {
+  @media (width >= 48rem) {
+    .md\:flex {
       display: flex;
     }
+    .md\:py-4 {
+      padding-block: calc(var(--spacing) * 4);
+    }
+  }
+  @media (width >= 64rem) {
     .lg\:inline-flex {
       display: inline-flex;
     }
@@ -624,6 +669,9 @@
     }
     .lg\:grid-cols-\[1fr_1\.4fr\] {
       grid-template-columns: 1fr 1.4fr;
+    }
+    .lg\:py-4 {
+      padding-block: calc(var(--spacing) * 4);
     }
     .lg\:text-6xl {
       font-size: var(--text-6xl);
@@ -856,6 +904,10 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-divide-x-reverse {
   syntax: "*";
   inherits: false;
@@ -895,6 +947,7 @@
       --tw-backdrop-opacity: initial;
       --tw-backdrop-saturate: initial;
       --tw-backdrop-sepia: initial;
+      --tw-duration: initial;
       --tw-divide-x-reverse: 0;
       --tw-tracking: initial;
     }
