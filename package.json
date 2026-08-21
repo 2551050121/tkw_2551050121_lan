@@ -1,4 +1,25 @@
 {
+  "name": "tkw_2551050121_lan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwind -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "tailwind -i ./src/input.css -o ./dist/output.css --minify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2551050121/tkw_2551050121_lan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/2551050121/tkw_2551050121_lan/issues"
+  },
+  "homepage": "https://github.com/2551050121/tkw_2551050121_lan#readme",
   "dependencies": {
     "@tailwindcss/cli": "^4.3.3",
     "tailwindcss": "^4.3.3"
