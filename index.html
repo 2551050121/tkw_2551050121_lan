@@ -31,8 +31,30 @@
         <li><a href="#cau-hoi" class="hover:text-brand-700">Câu hỏi</a></li>
       </ul>
 
-      <a href="#cta" class="btn btn-primary hidden lg:inline-flex">Dùng thử miễn phí</a>
+      <div class="flex items-center gap-3">
+        <a href="#cta" class="btn btn-primary hidden lg:inline-flex">Dùng thử miễn phí</a>
+ 
+        <!-- NHIỆM VỤ 2: nút hamburger — chừa chỗ cho menu mobile, chưa gắn JS (buổi 4 mới gắn vào 3 trang) -->
+        <button
+          type="button"
+          class="grid h-10 w-10 place-items-center rounded-lg border border-line text-ink lg:hidden"
+          aria-label="Mở menu điều hướng"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
     </nav>
+        <!-- NHIỆM VỤ 2: panel menu mobile — nội dung y hệt menu desktop, ẩn mặc định, để buổi 4 gắn hành vi mở/đóng -->
+    <ul id="mobile-menu" class="container hidden flex-col gap-1 border-t border-line py-3 text-sm font-medium">
+      <li><a href="#tinh-nang" class="block rounded-lg px-2 py-2 hover:bg-surface-alt">Tính năng</a></li>
+      <li><a href="#cach-hoat-dong" class="block rounded-lg px-2 py-2 hover:bg-surface-alt">Cách hoạt động</a></li>
+      <li><a href="#bang-gia" class="block rounded-lg px-2 py-2 hover:bg-surface-alt">Bảng giá</a></li>
+      <li><a href="#cau-hoi" class="block rounded-lg px-2 py-2 hover:bg-surface-alt">Câu hỏi</a></li>
+    </ul>
   </header>
 
   <main>
