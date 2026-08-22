@@ -14,11 +14,11 @@
   --color-brand-900: #1C448C;
 
   --color-accent-500: #6A67CE;
-  --color-ink:          #12211d; 
-  --color-muted:        #6b7280;  
-  --color-surface:      #ffffff;  
-  --color-surface-alt:  #f2f5f9; 
-  --color-line:         #d6dde3;  
+  --color-ink:          #12211d;  --color-ink-invert:        #eaf2ee;
+  --color-muted:        #6b7280;  --color-muted-invert:       #aab8b3;
+  --color-surface:      #ffffff;  --color-line-invert:        #29443d;
+  --color-surface-alt:  #f2f5f9;  --color-surface-dark:       #0e1c19;
+  --color-line:         #d6dde3;  --color-surface-alt-dark:   #162a25;
 
   /* ===== Phông chữ ===== */
   --font-display: "Nunito", sans-serif;
@@ -29,7 +29,7 @@
   --radius-pill: 9999px;
 }
 
-.dark {
+:root.dark {
   --color-ink: var(--color-ink-invert);
   --color-muted: var(--color-muted-invert);
   --color-line: var(--color-line-invert);
@@ -42,9 +42,7 @@
     font-family: var(--font-body);
     color: var(--color-ink);
     background-color: var(--color-surface);
-  @apply dark:text-ink-invert dark:bg-surface-dark;
   }
-
   h1, h2, h3 {
     font-family: var(--font-display);
   }
@@ -55,19 +53,15 @@
 
   .btn { @apply inline-flex items-center justify-center rounded-pill px-5 py-2.5 font-semibold transition-colors; }
   .btn-primary { @apply bg-brand-700 text-white hover:bg-brand-900; }
-  .btn-ghost { @apply border border-line text-ink hover:bg-surface-alt
-                  dark:border-line-invert dark:text-ink-invert dark:hover:bg-surface-alt-dark; }
+  .btn-ghost { @apply border border-line text-ink hover:bg-surface-alt; }
   .btn-lg { @apply px-7 py-3.5 text-base; }
 
 .card {
-  @apply rounded-card border border-line bg-surface p-6
-         dark:border-line-invert dark:bg-surface-alt-dark;
-}
+  @apply rounded-card border border-line bg-surface p-6;}
   .badge { @apply rounded-pill px-3 py-1 text-xs font-semibold; }
   .eyebrow { @apply text-xs font-semibold uppercase tracking-widest text-brand-700; }
 
-  .ticket { @apply relative rounded-card border border-line bg-surface p-6 shadow-xl
-              dark:border-line-invert dark:bg-surface-dark; }
+  .ticket { @apply relative rounded-card border border-line bg-surface p-6 shadow-xl; }
   .ticket::after {
     content: "";
     position: absolute;
