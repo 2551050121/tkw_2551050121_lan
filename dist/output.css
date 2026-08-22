@@ -235,6 +235,9 @@
   .top-0 {
     top: 0px;
   }
+  .left-1\/2 {
+    left: calc(1 / 2 * 100%);
+  }
   .left-6 {
     left: calc(var(--spacing) * 6);
   }
@@ -270,6 +273,9 @@
   }
   .mt-3 {
     margin-top: calc(var(--spacing) * 3);
+  }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
   }
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
@@ -376,8 +382,15 @@
   .max-w-xl {
     max-width: var(--container-xl);
   }
+  .min-w-\[640px\] {
+    min-width: 640px;
+  }
   .min-w-full {
     min-width: 100%;
+  }
+  .-translate-x-1\/2 {
+    --tw-translate-x: calc(calc(1 / 2 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .flex-col {
     flex-direction: column;
@@ -535,6 +548,9 @@
   }
   .p-3 {
     padding: calc(var(--spacing) * 3);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
   }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
@@ -936,6 +952,21 @@
     background-image: radial-gradient( circle at 6px 0, transparent 6px, var(--color-surface-dark) 6px );
   }
 }
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 @property --tw-space-y-reverse {
   syntax: "*";
   inherits: false;
@@ -1072,6 +1103,9 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
       --tw-space-y-reverse: 0;
       --tw-divide-y-reverse: 0;
       --tw-border-style: solid;
