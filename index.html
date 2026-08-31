@@ -10,6 +10,18 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Lato:wght@400;500;600&display=swap" rel="stylesheet" />
 
+  <!-- Chống chớp trắng: đặt sớm trong <head>, chạy TRƯỚC khi trình duyệt vẽ trang.
+       Không đặt trong theme.js vì file đó nạp cuối <body>, lúc đó đã vẽ nền trắng rồi. -->
+  <script>
+    (function () {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+
   <!-- CSS đã build từ input.css (chạy: npx @tailwindcss/cli -i ./input.css -o ./output.css) -->
   <link rel="stylesheet" href="./dist/output.css" />
 </head>
