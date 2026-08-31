@@ -16,7 +16,7 @@
       }
     })();
   </script>
-  
+
   <link rel="stylesheet" href="./dist/output.css">
 </head>
 
@@ -81,30 +81,64 @@
     <section class="mb-16 text-center">
       <p class="eyebrow">Bảng giá</p>
       <h1 class="mt-3 text-4xl font-extrabold sm:text-5xl">Chọn gói phù hợp với doanh nghiệp của bạn</h1>
+      <!-- BUỔI 4 · Tính năng 5 — công tắc Tháng / Năm.
+           role="switch" + aria-checked là ĐÚNG vai trò của một công tắc hai
+           trạng thái; CSS bắt trạng thái đó qua aria-checked:, không cần class riêng. -->
+      <div class="mt-8 flex items-center gap-3">
+        <span id="nhan-thang" class="text-sm font-medium">Trả theo tháng</span>
+
+        <button type="button" id="cong-tac-gia" role="switch" aria-checked="false"
+                aria-labelledby="nhan-thang nhan-nam"
+                class="cong-tac">
+          <span class="cong-tac-thumb" aria-hidden="true"></span>
+        </button>
+
+        <span id="nhan-nam" class="text-sm font-medium">Trả theo năm<span class="badge ml-1">tiết kiệm 20%</span>
+        </span>
+      </div>
+         
+
+
       <p class="mx-auto mt-4 max-w-xl text-muted">
         Không chi phí ẩn, không ràng buộc hợp đồng.
       </p>
     </section>
 
+    <div class="mb-10 flex items-center justify-center gap-3">
+      <span class="text-sm font-medium">Tháng</span>
+      <button type="button" id="cong-tac-gia" role="switch" aria-checked="false" class="cong-tac" aria-label="Chuyển đổi chu kỳ thanh toán">
+        <span class="cong-tac-thumb"></span>
+      </button>
+      <span class="text-sm font-medium">Năm <span class="badge bg-brand-50 text-brand-700">Tặng 2 tháng</span></span>
+    </div>
+
     <!-- PRICING CARDS -->
     <section class="mb-20 grid gap-8 md:grid-cols-3">
 
-      <div class="card flex flex-col gap-4 text-center">
+      <div class="card flex flex-col gap-4 text-center data-reveal">
         <h2 class="text-xl font-bold">Starter</h2>
         <p class="text-muted">Phù hợp doanh nghiệp nhỏ</p>
-        <p class="text-4xl font-extrabold">199k<span class="text-base font-medium text-muted">/tháng</span></p>
+        <p class="text-4xl font-extrabold">
+          <span data-price data-monthly="199000" data-yearly="1990000">199.000 ₫</span>
+          <span data-price-unit class="text-base font-medium text-muted">/tháng</span>
+        </p>
+
         <a href="./contact.html" class="btn btn-primary mt-auto w-full">Dùng thử</a>
       </div>
 
-      <div class="card relative flex flex-col gap-4 text-center ring-2 ring-brand-700">
+      <div class="card relative flex flex-col gap-4 text-center ring-2 ring-brand-700 data-reveal">
         <span class="badge absolute -top-3 left-1/2 -translate-x-1/2 bg-accent-500 text-white">Phổ biến nhất</span>
         <h2 class="text-xl font-bold">Pro</h2>
         <p class="text-muted">Đầy đủ tính năng</p>
-        <p class="text-4xl font-extrabold">499k<span class="text-base font-medium text-muted">/tháng</span></p>
+        <p class="text-4xl font-extrabold">
+          <span data-price data-monthly="499000" data-yearly="4990000">499.000 ₫</span>
+          <span data-price-unit class="text-base font-medium text-muted">/tháng</span>
+        </p>
+
         <a href="./contact.html" class="btn btn-primary mt-auto w-full">Chọn gói</a>
       </div>
 
-      <div class="card flex flex-col gap-4 text-center">
+      <div class="card flex flex-col gap-4 text-center data-reveal">
         <h2 class="text-xl font-bold">Enterprise</h2>
         <p class="text-muted">Cho doanh nghiệp lớn</p>
         <p class="text-4xl font-extrabold">Liên hệ</p>
@@ -118,7 +152,7 @@
       <h2 class="mb-2 text-2xl font-bold">So sánh tính năng</h2>
       <p class="mb-4 text-sm text-muted lg:hidden">Vuốt ngang để xem hết bảng.</p>
 
-      <div class="overflow-x-auto rounded-card border border-line">
+      <div class="overflow-x-auto rounded-card border border-line" data-reveal>
         <table class="min-w-[640px] w-full text-left text-sm">
           <thead class="bg-surface-alt">
             <tr>
@@ -163,17 +197,17 @@
       <h2 class="mb-6 text-2xl font-bold">Câu hỏi thường gặp</h2>
 
       <div class="flex flex-col gap-4">
-        <div class="card">
+        <div class="card" data-reveal>
           <h3 class="mb-2 font-semibold">Tôi có thể hủy gói bất kỳ lúc nào không?</h3>
           <p class="text-muted">Có. Bạn có thể hủy bất kỳ lúc nào mà không bị tính phí thêm.</p>
         </div>
 
-        <div class="card">
+        <div class="card" data-reveal>
           <h3 class="mb-2 font-semibold">Có phí cài đặt không?</h3>
           <p class="text-muted">Không. Manfice không thu phí cài đặt.</p>
         </div>
 
-        <div class="card">
+        <div class="card" data-reveal>
           <h3 class="mb-2 font-semibold">Có hỗ trợ doanh nghiệp lớn không?</h3>
           <p class="text-muted">Có. Gói Enterprise được thiết kế riêng cho doanh nghiệp lớn.</p>
         </div>

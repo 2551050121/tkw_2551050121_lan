@@ -97,4 +97,25 @@
 
   .faq-answer { @apply mt-2 text-muted; }
 
+    /* === BUỔI 4 · Công tắc giá tháng/năm === */
+  .cong-tac {
+    @apply relative h-7 w-12 rounded-pill bg-line transition-colors;
+  }
+  .cong-tac[aria-checked="true"] {
+    @apply bg-brand-600;
+  }
+  .cong-tac-thumb {
+    @apply absolute left-1 top-1 h-5 w-5 rounded-full bg-white shadow transition-transform;
+  }
+  .cong-tac[aria-checked="true"] .cong-tac-thumb {
+    @apply translate-x-5;
+  }
+
+  /* === BUỔI 4 · Hiệu ứng lộ dần khi cuộn === */
+  .js [data-reveal] {
+    @apply opacity-0 translate-y-4 transition-all duration-500 ease-out;
+  }
+  .js [data-reveal].is-visible {
+    @apply opacity-100 translate-y-0;
+  }
 }
