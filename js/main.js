@@ -4,6 +4,7 @@
 
 import { initNav, initHeaderOnScroll, initToTop } from "./nav.js";
 import { initFaq } from "./faq.js";
+import { initTheme } from "./theme.js";
 
 // TODO tiết 3: import initTheme từ theme.js
 // TODO tiết 4: import initPricing từ pricing.js, initReveal từ reveal.js
@@ -13,3 +14,4 @@ initNav();
 initHeaderOnScroll();
 initToTop();
 initFaq();
+initTheme();

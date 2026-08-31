@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bảng giá – Manfice</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Lato:wght@400;500;600&display=swap" rel="stylesheet" />
+   <!-- Chống chớp trắng: đặt sớm trong <head>, chạy TRƯỚC khi trình duyệt vẽ trang.
+       Không đặt trong theme.js vì file đó nạp cuối <body>, lúc đó đã vẽ nền trắng rồi. -->
+  <script>
+    (function () {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+  
   <link rel="stylesheet" href="./dist/output.css">
 </head>
 
@@ -26,6 +38,20 @@
 
       <div class="flex items-center gap-3">
         <a href="./contact.html" class="btn btn-primary hidden lg:inline-flex">Dùng thử miễn phí</a>
+        
+        <!-- Nút chuyển nền sáng/tối -->
+        <button
+          type="button"
+          id="nut-nen-toi"
+          class="grid h-10 w-10 place-items-center rounded-lg border border-line text-ink bg-surface-alt"
+          aria-pressed="false"
+          aria-label="Chuyển sang nền tối"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+        </button>
 
         <button
           type="button"
