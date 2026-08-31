@@ -19,6 +19,46 @@ export function initToTop(){
     btn.addEventListener("click", ()=>{
         const reduceMotion= window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         window.scrollTo({top: 0,behavior: reduceMotion ? "auto" : "smooth"});
-        
+
+    });
+}
+
+// Nhiệm vụ 2: Menu mobile
+export function initNav() {
+    const toggle = document.querySelector("[aria-controls='mobile-menu']");
+    const menu = document.getElementById("mobile-menu");
+    if (!toggle || !menu) return;
+
+    const header = toggle.closest("header");
+
+    const setOpen = (open) => {
+        menu.classList.toggle("hidden", !open);
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Đóng menu" : "Mở menu điều hướng");
+        document.body.classList.toggle("overflow-hidden", open);
+    };
+
+    toggle.addEventListener("click", () => {
+        const isOpen = toggle.getAttribute("aria-expanded") === "true";
+        setOpen(!isOpen);
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+            setOpen(false);
+            toggle.focus();
+        }
+    });
+
+    document.addEventListener("click", (e) => {
+        const isOpen = toggle.getAttribute("aria-expanded") === "true";
+        if (isOpen && header && !header.contains(e.target)) {
+            setOpen(false);
+        }
+    });
+
+    const mq = window.matchMedia("(min-width: 1024px)");
+    mq.addEventListener("change", (e) => {
+        if (e.matches) setOpen(false);
     });
 }
