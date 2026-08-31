@@ -62,3 +62,17 @@ export function initNav() {
         if (e.matches) setOpen(false);
     });
 }
+
+// Nhiệm vụ 2: Navbar đổi trạng thái khi cuộn
+export function initHeaderOnScroll() {
+    const header = document.querySelector("header");
+    const sentinel = document.getElementById("nav-sentinel");
+    if (!header || !sentinel) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+        const scrolled = !entry.isIntersecting;
+        header.classList.toggle("shadow-sm", scrolled);
+    });
+
+    observer.observe(sentinel);
+}
