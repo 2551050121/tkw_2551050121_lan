@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -431,6 +431,18 @@
       </p>
     </div>
   </footer>
+
+   <!-- BUỔI 4 · Bài khởi động — nút lên đầu trang, hiện sau khi cuộn quá 400px -->
+  <button type="button" id="to-top" class="to-top" aria-label="Lên đầu trang">
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Nạp kiểu module, đặt cuối <body>. Module tự hoãn tới khi HTML phân tích
+       xong nên KHÔNG cần DOMContentLoaded. -->
+  <script type="module" src="./js/main.js"></script>
 
 </body>
 </html>
