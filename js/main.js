@@ -3,17 +3,13 @@
 // nên một file main.js này dùng chung được cho index / pricing / contact.
 
 import { initNav, initHeaderOnScroll, initToTop } from "./nav.js";
-import { initTheme } from "./theme.js";
 import { initFaq } from "./faq.js";
-import { initPricing } from "./pricing.js";
-import { initSlider } from "./slider.js";
-import { initReveal } from "./reveal.js";
+
+// TODO tiết 3: import initTheme từ theme.js
+// TODO tiết 4: import initPricing từ pricing.js, initReveal từ reveal.js
+// TODO tiết 5: import initSlider từ slider.js
 
 initNav();
 initHeaderOnScroll();
 initToTop();
-initTheme();
 initFaq();
-initPricing();
-initSlider();
-initReveal();

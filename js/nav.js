@@ -72,6 +72,7 @@ export function initHeaderOnScroll() {
     const observer = new IntersectionObserver(([entry]) => {
         const scrolled = !entry.isIntersecting;
         header.classList.toggle("shadow-sm", scrolled);
+        header.classList.toggle("is-scrolled", scrolled);
     });
 
     observer.observe(sentinel);

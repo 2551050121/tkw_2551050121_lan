@@ -15,7 +15,7 @@
 </head>
 
 <body>
-
+  <div id="nav-sentinel" class="h-px" aria-hidden="true"></div>
   <!-- NAVBAR (flex: một hàng, kích thước theo nội dung) -->
     <header class="sticky top-0 z-40 border-b border-line bg-surface/80 backdrop-blur">
     <nav class="container flex items-center justify-between py-4">
@@ -343,25 +343,74 @@
           </div>
 
           <ul class="flex flex-col gap-8">
-            <li class="flex flex-col gap-2">
-              <h3 class="text-lg font-bold">Có cần cài đặt phần mềm không?</h3>
-              <p class="text-muted">Không. Manfice chạy hoàn toàn trên web và ứng dụng di động.</p>
+            <li class="faq-item">
+              <h3>
+                <button type="button" data-faq-trigger id="faq-t1" aria-expanded="false" aria-controls="faq-p1" class="faq-trigger">
+                  Có cần cài đặt phần mềm không?
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
+              </h3>
+              <div id="faq-p1" hidden class="faq-answer">
+                Không. Manfice chạy hoàn toàn trên web và ứng dụng di động.
+              </div>
             </li>
-            <li class="flex flex-col gap-2">
-              <h3 class="text-lg font-bold">Nhân viên lớn tuổi dùng có khó không?</h3>
-              <p class="text-muted">Giao diện đơn giản, chữ lớn, thao tác dễ hiểu.</p>
+
+            <li class="faq-item">
+              <h3>
+                <button type="button" data-faq-trigger id="faq-t2" aria-expanded="false" aria-controls="faq-p2" class="faq-trigger">
+                  Nhân viên lớn tuổi dùng có khó không?
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
+              </h3>
+              <div id="faq-p2" hidden class="faq-answer">
+                Giao diện đơn giản, chữ lớn, thao tác dễ hiểu.
+              </div>
             </li>
-            <li class="flex flex-col gap-2">
-              <h3 class="text-lg font-bold">Có xuất bảng lương ra Excel không?</h3>
-              <p class="text-muted">Có. Xuất file chỉ với một nút bấm.</p>
+
+            <li class="faq-item">
+              <h3>
+                <button type="button" data-faq-trigger id="faq-t3" aria-expanded="false" aria-controls="faq-p3" class="faq-trigger">
+                  Có xuất bảng lương ra Excel không?
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
+              </h3>
+              <div id="faq-p3" hidden class="faq-answer">
+                Có. Xuất file chỉ với một nút bấm.
+              </div>
             </li>
-            <li class="flex flex-col gap-2">
-              <h3 class="text-lg font-bold">Có hỗ trợ máy chấm công không?</h3>
-              <p class="text-muted">Có, Manfice hỗ trợ hầu hết các dòng máy phổ biến.</p>
+
+            <li class="faq-item">
+              <h3>
+                <button type="button" data-faq-trigger id="faq-t4" aria-expanded="false" aria-controls="faq-p4" class="faq-trigger">
+                  Có hỗ trợ máy chấm công không?
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
+              </h3>
+              <div id="faq-p4" hidden class="faq-answer">
+                Có, Manfice hỗ trợ hầu hết các dòng máy phổ biến.
+              </div>
             </li>
-            <li class="flex flex-col gap-2">
-              <h3 class="text-lg font-bold">Dữ liệu có an toàn không?</h3>
-              <p class="text-muted">Dữ liệu được mã hóa và lưu trữ trên máy chủ bảo mật đạt chuẩn quốc tế.</p>
+
+            <li class="faq-item">
+              <h3>
+                <button type="button" data-faq-trigger id="faq-t5" aria-expanded="false" aria-controls="faq-p5" class="faq-trigger">
+                  Dữ liệu có an toàn không?
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
+              </h3>
+              <div id="faq-p5" hidden class="faq-answer">
+                Dữ liệu được mã hóa và lưu trữ trên máy chủ bảo mật đạt chuẩn quốc tế.
+              </div>
             </li>
           </ul>
         </div>

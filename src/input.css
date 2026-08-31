@@ -81,8 +81,20 @@
   /* === BUOI 4=== */
   /* Nút lên đầu trang */
   #to-top {
-    @apply fixed bottom-6 right-6 z-30 hidden flex h-11 w-11 place-items-center rounded-full bg-brand-700 text-white shadow-lg transition-colors hover:bg-brand-900;
+    @apply fixed bottom-6 right-6 z-30 hidden flex h-11 w-11 items-center justify-center rounded-full bg-brand-700 text-white shadow-lg transition-colors hover:bg-brand-900;
   }
+  /* Navbar khi cuộn */
+  header.is-scrolled {
+    @apply bg-surface/95;
+  }
+  /* === BUOI 4 · FAQ accordion === */
+  .faq-item { @apply border-b border-line pb-6; }
+  .faq-item:last-child { @apply border-b-0 pb-2; }
 
+  .faq-trigger { @apply flex w-full items-center justify-between gap-4 text-left text-lg font-bold; }
+  .faq-trigger svg { @apply h-5 w-5 shrink-0 transition-transform; }
+  .faq-trigger[aria-expanded="true"] svg { @apply rotate-180; }
+
+  .faq-answer { @apply mt-2 text-muted; }
 
 }
