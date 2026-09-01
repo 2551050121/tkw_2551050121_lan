@@ -125,4 +125,32 @@
   .js [data-reveal].is-visible {
     @apply opacity-100 translate-y-0;
   }
+
+  /* --- Slider cảm nhận ----------------------------------------- */
+  .slider-viewport { @apply overflow-hidden; }
+  .slider-track {
+    @apply flex list-none p-0 m-0;
+    transition: transform 400ms ease;
+  }
+  .slider-slide { @apply w-full shrink-0; }
+  .slider-nav {
+    @apply grid h-10 w-10 place-items-center rounded-pill border border-line
+           bg-surface transition-colors hover:bg-surface-alt;
+  }
+  /* Vùng chạm phải đủ 24×24 theo WCAG 2.2 (Target Size). Chấm nhìn thấy vẫn
+     nhỏ, vẽ bằng ::before — tách "vùng bấm được" khỏi "vùng nhìn thấy". */
+  .slider-dot {
+    @apply grid h-6 w-6 place-items-center rounded-pill bg-transparent;
+  }
+  .slider-dot::before {
+    content: "";
+    @apply block h-2.5 w-2.5 rounded-pill border border-line transition-colors;
+  }
+  .slider-dot[aria-current="true"]::before { @apply border-brand-700 bg-brand-700; }
+}
+
+/* Người dùng bật "giảm chuyển động": tắt sạch transition của slider và
+   hiệu ứng lộ dần, dù lúc đó JS đã chạy hay chưa. */
+@media (prefers-reduced-motion: reduce) {
+  .slider-track, .js [data-reveal] { transition: none !important; }
 }

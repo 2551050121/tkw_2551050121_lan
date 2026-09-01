@@ -7,10 +7,9 @@ import { initFaq } from "./faq.js";
 import { initTheme } from "./theme.js";
 import { initPricing } from "./pricing.js";
 import { initReveal } from "./reveal.js";
+import { initSlider } from "./slider.js";
 
 
-// TODO tiết 4: import initPricing từ pricing.js, initReveal từ reveal.js
-// TODO tiết 5: import initSlider từ slider.js
 
 initNav();
 initHeaderOnScroll();
@@ -19,3 +18,4 @@ initFaq();
 initTheme();
 initPricing();
 initReveal();
+initSlider();
