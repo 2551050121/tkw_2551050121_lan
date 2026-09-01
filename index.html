@@ -275,35 +275,54 @@
       <div class="container">
         <h2 class="mb-10 text-center text-3xl font-bold">Khách hàng nói gì</h2>
 
-        <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <li class="card" data-reveal>
-            <figure class="flex h-full flex-col gap-4">
-              <blockquote class="text-ink/80 ">Manfice giúp tôi giảm 70% thời gian tính lương mỗi tháng.</blockquote>
-              <figcaption class="mt-auto flex flex-col text-sm text-muted">
-                <span class="font-semibold text-ink ">Chị Lan</span>
-                <cite class="not-italic">GreenFood</cite>
-              </figcaption>
-            </figure>
-          </li>
-          <li class="card" data-reveal>
-            <figure class="flex h-full flex-col gap-4">
-              <blockquote class="text-ink/80 ">Nhân viên chấm công bằng điện thoại rất tiện, không còn chen nhau ở máy chấm công.</blockquote>
-              <figcaption class="mt-auto flex flex-col text-sm text-muted">
-                <span class="font-semibold text-ink ">Anh Huy</span>
-                <cite class="not-italic">TechZone</cite>
-              </figcaption>
-            </figure>
-          </li>
-          <li class="card" data-reveal>
-            <figure class="flex h-full flex-col gap-4">
-              <blockquote class="text-ink/80 ">Quy trình duyệt nghỉ phép nhanh hơn rất nhiều, không còn giấy tờ.</blockquote>
-              <figcaption class="mt-auto flex flex-col text-sm text-muted">
-                <span class="font-semibold text-ink ">Chị My</span>
-                <cite class="not-italic">VietHome</cite>
-              </figcaption>
-            </figure>
-          </li>
-        </ul>
+        <div id="slider-camnhan" class="slider" role="group" aria-roledescription="băng chuyền"
+            aria-label="Cảm nhận khách hàng" tabindex="0">
+          <div class="slider-viewport">
+            <ul class="slider-track" data-slider-track>
+              <li class="slider-slide" data-slide>
+                <figure class="card flex h-full flex-col gap-4">
+                  <blockquote class="text-ink/80">Manfice giúp tôi giảm 70% thời gian tính lương mỗi tháng.</blockquote>
+                  <figcaption class="mt-auto flex flex-col text-sm text-muted">
+                    <span class="font-semibold text-ink">Chị Lan</span>
+                    <cite class="not-italic">GreenFood</cite>
+                  </figcaption>
+                </figure>
+              </li>
+              <li class="slider-slide" data-slide>
+                <figure class="card flex h-full flex-col gap-4">
+                  <blockquote class="text-ink/80">Nhân viên chấm công bằng điện thoại rất tiện, không còn chen nhau ở máy chấm công.</blockquote>
+                  <figcaption class="mt-auto flex flex-col text-sm text-muted">
+                    <span class="font-semibold text-ink">Anh Huy</span>
+                    <cite class="not-italic">TechZone</cite>
+                  </figcaption>
+                </figure>
+              </li>
+              <li class="slider-slide" data-slide>
+                <figure class="card flex h-full flex-col gap-4">
+                  <blockquote class="text-ink/80">Quy trình duyệt nghỉ phép nhanh hơn rất nhiều, không còn giấy tờ.</blockquote>
+                  <figcaption class="mt-auto flex flex-col text-sm text-muted">
+                    <span class="font-semibold text-ink">Chị My</span>
+                    <cite class="not-italic">VietHome</cite>
+                  </figcaption>
+                </figure>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-6 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2" data-slider-dots></div>
+            <div class="flex items-center gap-2">
+              <button type="button" data-slider-prev class="slider-nav" aria-label="Cảm nhận trước">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+              </button>
+              <button type="button" data-slider-next class="slider-nav" aria-label="Cảm nhận tiếp theo">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
