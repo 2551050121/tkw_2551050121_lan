@@ -80,16 +80,12 @@
   }
   /* === BUOI 4=== */
   /* Nút lên đầu trang */
+  /* Nút lên đầu trang — hiện/ẩn hoàn toàn do nav.js toggle class hidden/flex */
   #to-top {
     @apply fixed bottom-6 right-6 z-30 flex h-11 w-11 items-center justify-center rounded-full bg-brand-700 text-white shadow-lg transition-opacity hover:bg-brand-900;
-    opacity: 0;
-    pointer-events: none;
+   
   }
 
-  #to-top.show {
-    opacity: 1;
-    pointer-events: auto;
-  }
   /* Navbar khi cuộn */
   header.is-scrolled {
     @apply bg-surface/95;
