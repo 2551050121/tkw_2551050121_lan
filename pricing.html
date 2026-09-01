@@ -81,36 +81,25 @@
     <section class="mb-16 text-center">
       <p class="eyebrow">Bảng giá</p>
       <h1 class="mt-3 text-4xl font-extrabold sm:text-5xl">Chọn gói phù hợp với doanh nghiệp của bạn</h1>
+      
       <!-- BUỔI 4 · Tính năng 5 — công tắc Tháng / Năm.
            role="switch" + aria-checked là ĐÚNG vai trò của một công tắc hai
            trạng thái; CSS bắt trạng thái đó qua aria-checked:, không cần class riêng. -->
       <div class="mt-8 flex items-center gap-3">
         <span id="nhan-thang" class="text-sm font-medium">Trả theo tháng</span>
-
         <button type="button" id="cong-tac-gia" role="switch" aria-checked="false"
                 aria-labelledby="nhan-thang nhan-nam"
                 class="cong-tac">
           <span class="cong-tac-thumb" aria-hidden="true"></span>
         </button>
-
         <span id="nhan-nam" class="text-sm font-medium">Trả theo năm<span class="badge ml-1">tiết kiệm 20%</span>
         </span>
       </div>
-         
-
 
       <p class="mx-auto mt-4 max-w-xl text-muted">
         Không chi phí ẩn, không ràng buộc hợp đồng.
       </p>
     </section>
-
-    <div class="mb-10 flex items-center justify-center gap-3">
-      <span class="text-sm font-medium">Tháng</span>
-      <button type="button" id="cong-tac-gia" role="switch" aria-checked="false" class="cong-tac" aria-label="Chuyển đổi chu kỳ thanh toán">
-        <span class="cong-tac-thumb"></span>
-      </button>
-      <span class="text-sm font-medium">Năm <span class="badge bg-brand-50 text-brand-700">Tặng 2 tháng</span></span>
-    </div>
 
     <!-- PRICING CARDS -->
     <section class="mb-20 grid gap-8 md:grid-cols-3">

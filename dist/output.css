@@ -46,6 +46,7 @@
     --tracking-widest: 0.1em;
     --leading-tight: 1.25;
     --radius-lg: 0.5rem;
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -287,6 +288,9 @@
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
   }
+  .mt-8 {
+    margin-top: calc(var(--spacing) * 8);
+  }
   .mt-10 {
     margin-top: calc(var(--spacing) * 10);
   }
@@ -316,6 +320,9 @@
   }
   .mb-20 {
     margin-bottom: calc(var(--spacing) * 20);
+  }
+  .ml-1 {
+    margin-left: var(--spacing);
   }
   .block {
     display: block;
@@ -954,6 +961,54 @@
     margin-top: calc(var(--spacing) * 2);
     color: var(--color-muted);
   }
+  .cong-tac {
+    position: relative;
+    height: calc(var(--spacing) * 7);
+    width: calc(var(--spacing) * 12);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-line);
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .cong-tac[aria-checked="true"] {
+    background-color: var(--color-brand-600);
+  }
+  .cong-tac-thumb {
+    position: absolute;
+    top: var(--spacing);
+    left: var(--spacing);
+    height: calc(var(--spacing) * 5);
+    width: calc(var(--spacing) * 5);
+    border-radius: calc(infinity * 1px);
+    background-color: var(--color-white);
+    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    transition-property: transform, translate, scale, rotate;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .cong-tac[aria-checked="true"] .cong-tac-thumb {
+    --tw-translate-x: calc(var(--spacing) * 5);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .js [data-reveal] {
+    --tw-translate-y: calc(var(--spacing) * 4);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+    opacity: 0%;
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 500ms;
+    transition-duration: 500ms;
+    --tw-ease: var(--ease-out);
+    transition-timing-function: var(--ease-out);
+  }
+  .js [data-reveal].is-visible {
+    --tw-translate-y: 0px;
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+    opacity: 100%;
+  }
 }
 @property --tw-translate-x {
   syntax: "*";
@@ -1098,6 +1153,14 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ease {
+  syntax: "*";
+  inherits: false;
+}
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
@@ -1133,6 +1196,8 @@
       --tw-backdrop-sepia: initial;
       --tw-divide-x-reverse: 0;
       --tw-tracking: initial;
+      --tw-duration: initial;
+      --tw-ease: initial;
     }
   }
 }

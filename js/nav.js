@@ -7,7 +7,7 @@ export function initToTop(){
 
     const SHOW_AFTER=400;
 
-    const toggleVisibility=()=>{
+    const toggleVisibility = () => {
         const show=window.scrollY > SHOW_AFTER;
         btn.classList.toggle("hidden", !show);
         btn.classList.toggle("flex", show);
@@ -16,7 +16,7 @@ export function initToTop(){
     toggleVisibility();
     window.addEventListener("scroll", toggleVisibility, {passive: true});
 
-    btn.addEventListener("click", ()=>{
+    btn.addEventListener("click", () => {
         const reduceMotion= window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         window.scrollTo({top: 0,behavior: reduceMotion ? "auto" : "smooth"});
 
