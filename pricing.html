@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng giá – Manfice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Lato:wght@400;500;600&display=swap" rel="stylesheet" />
+   <!-- Chống chớp trắng: đặt sớm trong <head>, chạy TRƯỚC khi trình duyệt vẽ trang.
+       Không đặt trong theme.js vì file đó nạp cuối <body>, lúc đó đã vẽ nền trắng rồi. -->
+  <script>
+    (function () {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="./dist/output.css">
+</head>
+
+<body>
+  <div id="nav-sentinel" class="h-px" aria-hidden="true"></div>
+  <!-- HEADER: giống index.html, kể cả hamburger — hạn chế của HTML tĩnh, ghi ở README -->
+  <header class="sticky top-0 z-40 border-b border-line bg-surface/80 backdrop-blur">
+    <nav class="container flex items-center justify-between py-4">
+      <a href="./index.html" class="flex items-center gap-2.5">
+        <span class="grid h-9 w-9 place-items-center rounded-lg bg-brand-700 text-lg font-bold text-white">M</span>
+        <span class="text-xl font-extrabold">Manfice</span>
+      </a>
+
+      <ul class="hidden items-center gap-8 text-sm font-medium lg:flex">
+        <li><a href="./index.html" class="hover:text-brand-700">Trang chủ</a></li>
+        <li><a href="./pricing.html" class="font-semibold text-brand-700" aria-current="page">Bảng giá</a></li>
+        <li><a href="./contact.html" class="hover:text-brand-700">Liên hệ</a></li>
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <a href="./contact.html" class="btn btn-primary hidden lg:inline-flex">Dùng thử miễn phí</a>
+        
+        <!-- Nút chuyển nền sáng/tối -->
+        <button
+          type="button"
+          id="nut-nen-toi"
+          class="grid h-10 w-10 place-items-center rounded-lg border border-line text-ink bg-surface-alt"
+          aria-pressed="false"
+          aria-label="Chuyển sang nền tối"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          class="grid h-10 w-10 place-items-center rounded-lg border border-line text-ink bg-surface-alt lg:hidden"
+          aria-label="Mở menu điều hướng"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <ul id="mobile-menu" class="container hidden flex-col gap-1 border-t border-line py-3 text-sm font-medium">
+      <li><a href="./index.html" class="block rounded-lg px-2 py-2 hover:bg-surface-alt">Trang chủ</a></li>
+      <li><a href="./pricing.html" class="block rounded-lg px-2 py-2 hover:bg-surface-alt">Bảng giá</a></li>
+      <li><a href="./contact.html" class="block rounded-lg px-2 py-2 hover:bg-surface-alt">Liên hệ</a></li>
+    </ul>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container py-16">
+
+    <!-- HERO -->
+    <section class="mb-16 text-center">
+      <p class="eyebrow">Bảng giá</p>
+      <h1 class="mt-3 text-4xl font-extrabold sm:text-5xl">Chọn gói phù hợp với doanh nghiệp của bạn</h1>
+
+      <!-- BUỔI 4 · Tính năng 5 — công tắc Tháng / Năm.
+           role="switch" + aria-checked là ĐÚNG vai trò của một công tắc hai
+           trạng thái; CSS bắt trạng thái đó qua aria-checked:, không cần class riêng. -->
+      <div class="mt-8 flex items-center gap-3">
+        <span id="nhan-thang" class="text-sm font-medium">Trả theo tháng</span>
+        <button type="button" id="cong-tac-gia" role="switch" aria-checked="false"
+                aria-labelledby="nhan-thang nhan-nam"
+                class="cong-tac">
+          <span class="cong-tac-thumb" aria-hidden="true"></span>
+        </button>
+        <span id="nhan-nam" class="text-sm font-medium">Trả theo năm<span class="badge ml-1">tiết kiệm 20%</span>
+        </span>
+      </div>
+
+      <p class="mx-auto mt-4 max-w-xl text-muted">
+        Không chi phí ẩn, không ràng buộc hợp đồng.
+      </p>
+    </section>
+
+    <!-- PRICING CARDS -->
+    <section class="mb-20 grid gap-8 md:grid-cols-3">
+
+      <div class="card flex flex-col gap-4 text-center" data-reveal>
+        <h2 class="text-xl font-bold">Starter</h2>
+        <p class="text-muted">Phù hợp doanh nghiệp nhỏ</p>
+        <p class="text-4xl font-extrabold">
+          <span data-price data-monthly="199000" data-yearly="1990000">199.000 ₫</span>
+          <span data-price-unit class="text-base font-medium text-muted">/tháng</span>
+        </p>
+
+        <a href="./contact.html" class="btn btn-primary mt-auto w-full">Dùng thử</a>
+      </div>
+
+      <div class="card relative flex flex-col gap-4 text-center ring-2 ring-brand-700" data-reveal>
+        <span class="badge absolute -top-3 left-1/2 -translate-x-1/2 bg-accent-500 text-white">Phổ biến nhất</span>
+        <h2 class="text-xl font-bold">Pro</h2>
+        <p class="text-muted">Đầy đủ tính năng</p>
+        <p class="text-4xl font-extrabold">
+          <span data-price data-monthly="499000" data-yearly="4990000">499.000 ₫</span>
+          <span data-price-unit class="text-base font-medium text-muted">/tháng</span>
+        </p>
+
+        <a href="./contact.html" class="btn btn-primary mt-auto w-full">Chọn gói</a>
+      </div>
+
+      <div class="card flex flex-col gap-4 text-center" data-reveal>
+        <h2 class="text-xl font-bold">Enterprise</h2>
+        <p class="text-muted">Cho doanh nghiệp lớn</p>
+        <p class="text-4xl font-extrabold">Liên hệ</p>
+        <a href="./contact.html" class="btn btn-ghost mt-auto w-full">Liên hệ tư vấn</a>
+      </div>
+
+    </section>
+
+    <!-- FEATURE TABLE: cuộn ngang thay vì ép vỡ chữ ở 360px (quyết định thiết kế, nhiệm vụ 2) -->
+    <section class="mb-20">
+      <h2 class="mb-2 text-2xl font-bold">So sánh tính năng</h2>
+      <p class="mb-4 text-sm text-muted lg:hidden">Vuốt ngang để xem hết bảng.</p>
+
+      <div class="overflow-x-auto rounded-card border border-line" data-reveal>
+        <table class="min-w-[640px] w-full text-left text-sm">
+          <thead class="bg-surface-alt">
+            <tr>
+              <th scope="col" class="p-4 font-bold">Tính năng</th>
+              <th scope="col" class="p-4 text-center font-bold">Starter</th>
+              <th scope="col" class="p-4 text-center font-bold text-brand-700">Pro</th>
+              <th scope="col" class="p-4 text-center font-bold">Enterprise</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-line">
+              <th scope="row" class="p-4 font-medium">Quản lý nhân sự</th>
+              <td class="p-4 text-center text-muted">✔</td>
+              <td class="p-4 text-center text-muted">✔</td>
+              <td class="p-4 text-center text-muted">✔</td>
+            </tr>
+            <tr class="border-t border-line">
+              <th scope="row" class="p-4 font-medium">Chấm công</th>
+              <td class="p-4 text-center text-muted">✔</td>
+              <td class="p-4 text-center text-muted">✔</td>
+              <td class="p-4 text-center text-muted">✔</td>
+            </tr>
+            <tr class="border-t border-line">
+              <th scope="row" class="p-4 font-medium">Tính lương tự động</th>
+              <td class="p-4 text-center text-muted">✖</td>
+              <td class="p-4 text-center text-muted">✔</td>
+              <td class="p-4 text-center text-muted">✔</td>
+            </tr>
+            <tr class="border-t border-line">
+              <th scope="row" class="p-4 font-medium">Báo cáo nâng cao</th>
+              <td class="p-4 text-center text-muted">✖</td>
+              <td class="p-4 text-center text-muted">✖</td>
+              <td class="p-4 text-center text-muted">✔</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mx-auto max-w-3xl">
+      <h2 class="mb-6 text-2xl font-bold">Câu hỏi thường gặp</h2>
+
+      <div class="flex flex-col gap-4">
+        <div class="card" data-reveal>
+          <h3 class="mb-2 font-semibold">Tôi có thể hủy gói bất kỳ lúc nào không?</h3>
+          <p class="text-muted">Có. Bạn có thể hủy bất kỳ lúc nào mà không bị tính phí thêm.</p>
+        </div>
+
+        <div class="card" data-reveal>
+          <h3 class="mb-2 font-semibold">Có phí cài đặt không?</h3>
+          <p class="text-muted">Không. Manfice không thu phí cài đặt.</p>
+        </div>
+
+        <div class="card" data-reveal>
+          <h3 class="mb-2 font-semibold">Có hỗ trợ doanh nghiệp lớn không?</h3>
+          <p class="text-muted">Có. Gói Enterprise được thiết kế riêng cho doanh nghiệp lớn.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-line bg-surface-alt py-8 text-center text-sm text-muted">
+    © 2026 Manfice. All rights reserved.
+  </footer>
+
+   <!-- BUỔI 4 · Bài khởi động — nút lên đầu trang, hiện sau khi cuộn quá 400px -->
+  <button type="button" id="to-top" class="to-top" aria-label="Lên đầu trang">
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Nạp kiểu module, đặt cuối <body>. Module tự hoãn tới khi HTML phân tích
+       xong nên KHÔNG cần DOMContentLoaded. -->
+  <script type="module" src="./js/main.js"></script>
+
+</body>
+</html>

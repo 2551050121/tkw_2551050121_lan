@@ -1,4 +1,7 @@
 @import "tailwindcss";
+/* Đã khai báo từ buổi 1 — bật biến thể dark bằng class="dark" trên <html> hoặc cha bất kỳ */
+@custom-variant dark (&:where(.dark, .dark *));
+
 
 @theme {
   /* ===== Màu thương hiệu — Manfice (phần mềm quản lý nhân sự) ===== */
@@ -11,12 +14,11 @@
   --color-brand-900: #1C448C;
 
   --color-accent-500: #6A67CE;
-
-  --color-ink:          #000000;
-  --color-muted:        #D1D5DB;
-  --color-surface:      #FAFAFA;
-  --color-surface-alt:  #F2F5F9;
-  --color-line:         #D6DDE3;
+  --color-ink:          #12211d;  --color-ink-invert:        #eaf2ee;
+  --color-muted:        #6b7280;  --color-muted-invert:       #aab8b3;
+  --color-surface:      #ffffff;  --color-line-invert:        #29443d;
+  --color-surface-alt:  #f2f5f9;  --color-surface-dark:       #0e1c19;
+  --color-line:         #d6dde3;  --color-surface-alt-dark:   #162a25;
 
   /* ===== Phông chữ ===== */
   --font-display: "Nunito", sans-serif;
@@ -27,11 +29,19 @@
   --radius-pill: 9999px;
 }
 
+:root.dark {
+  --color-ink: var(--color-ink-invert);
+  --color-muted: var(--color-muted-invert);
+  --color-line: var(--color-line-invert);
+  --color-surface: var(--color-surface-dark);
+  --color-surface-alt: var(--color-surface-alt-dark);
+}
+
 @layer base {
   body {
     font-family: var(--font-body);
     color: var(--color-ink);
-    background-color: #fff;
+    background-color: var(--color-surface);
   }
   h1, h2, h3 {
     font-family: var(--font-display);
@@ -46,18 +56,97 @@
   .btn-ghost { @apply border border-line text-ink hover:bg-surface-alt; }
   .btn-lg { @apply px-7 py-3.5 text-base; }
 
-  .card { @apply rounded-card border border-line bg-white p-6; }
+.card {
+  @apply rounded-card border border-line bg-surface p-6;}
   .badge { @apply rounded-pill px-3 py-1 text-xs font-semibold; }
   .eyebrow { @apply text-xs font-semibold uppercase tracking-widest text-brand-700; }
 
-  .ticket { @apply relative rounded-card border border-line bg-white p-6 shadow-xl; }
+  .ticket { @apply relative rounded-card border border-line bg-surface p-6 shadow-xl; }
   .ticket::after {
     content: "";
     position: absolute;
     left: 0; right: 0; bottom: -8px;
     height: 16px;
-    background-image: radial-gradient(circle at 6px 0, transparent 6px, white 6px);
+    background-image: radial-gradient(circle at 6px 0, transparent 6px, var(--color-surface) 6px);
     background-size: 12px 12px;
     background-repeat: repeat-x;
   }
+  .dark .ticket::after {
+  background-image: radial-gradient(
+    circle at 6px 0,
+    transparent 6px,
+    var(--color-surface-dark) 6px
+  );
+  }
+  /* === BUOI 4=== */
+  /* Nút lên đầu trang */
+  /* Nút lên đầu trang — hiện/ẩn hoàn toàn do nav.js toggle class hidden/flex */
+  #to-top {
+    @apply fixed bottom-6 right-6 z-30 flex h-11 w-11 items-center justify-center rounded-full bg-brand-700 text-white shadow-lg transition-opacity hover:bg-brand-900;
+   
+  }
+
+  /* Navbar khi cuộn */
+  header.is-scrolled {
+    @apply bg-surface/95;
+  }
+  /* === BUOI 4 · FAQ accordion === */
+  .faq-item { @apply border-b border-line pb-6; }
+  .faq-item:last-child { @apply border-b-0 pb-2; }
+
+  .faq-trigger { @apply flex w-full items-center justify-between gap-4 text-left text-lg font-bold; }
+  .faq-trigger svg { @apply h-5 w-5 shrink-0 transition-transform; }
+  .faq-trigger[aria-expanded="true"] svg { @apply rotate-180; }
+
+  .faq-answer { @apply mt-2 text-muted; }
+
+    /* === BUỔI 4 · Công tắc giá tháng/năm === */
+  .cong-tac {
+    @apply relative h-7 w-12 rounded-pill bg-line transition-colors;
+  }
+  .cong-tac[aria-checked="true"] {
+    @apply bg-brand-600;
+  }
+  .cong-tac-thumb {
+    @apply absolute left-1 top-1 h-5 w-5 rounded-full bg-white shadow transition-transform;
+  }
+  .cong-tac[aria-checked="true"] .cong-tac-thumb {
+    @apply translate-x-5;
+  }
+
+  /* === BUỔI 4 · Hiệu ứng lộ dần khi cuộn === */
+  .js [data-reveal] {
+    @apply opacity-0 translate-y-4 transition-all duration-500 ease-out;
+  }
+  .js [data-reveal].is-visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* --- Slider cảm nhận ----------------------------------------- */
+  .slider-viewport { @apply overflow-hidden; }
+  .slider-track {
+    @apply flex list-none p-0 m-0;
+    transition: transform 400ms ease;
+  }
+  .slider-slide { @apply w-full shrink-0; }
+  .slider-nav {
+    @apply grid h-10 w-10 place-items-center rounded-pill border border-line
+           bg-surface transition-colors hover:bg-surface-alt;
+  }
+  /* Vùng chạm phải đủ 24×24 theo WCAG 2.2 (Target Size). Chấm nhìn thấy vẫn
+     nhỏ, vẽ bằng ::before — tách "vùng bấm được" khỏi "vùng nhìn thấy". */
+  .slider-dot {
+    @apply grid h-6 w-6 place-items-center rounded-pill bg-transparent;
+  }
+  .slider-dot::before {
+    content: "";
+    @apply block h-2.5 w-2.5 rounded-pill border border-line transition-colors;
+  }
+  .slider-dot[aria-current="true"]::before { @apply border-brand-700 bg-brand-700; }
+}
+
+/* Người dùng bật "giảm chuyển động": tắt sạch transition của slider và
+   hiệu ứng lộ dần, dù lúc đó JS đã chạy hay chưa. */
+@media (prefers-reduced-motion: reduce) {
+  .slider-track, .js [data-reveal] { transition: none !important; }
 }

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liên hệ – Manfice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Lato:wght@400;500;600&display=swap" rel="stylesheet" />
+   <!-- Chống chớp trắng: đặt sớm trong <head>, chạy TRƯỚC khi trình duyệt vẽ trang.
+       Không đặt trong theme.js vì file đó nạp cuối <body>, lúc đó đã vẽ nền trắng rồi. -->
+  <script>
+    (function () {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="./dist/output.css">
+</head>
+
+<body>
+  <div id="nav-sentinel" class="h-px" aria-hidden="true"></div>
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-line bg-surface/80 backdrop-blur">
+    <nav class="container flex items-center justify-between py-4">
+      <a href="./index.html" class="flex items-center gap-2.5">
+        <span class="grid h-9 w-9 place-items-center rounded-lg bg-brand-700 text-lg font-bold text-white">M</span>
+        <span class="text-xl font-extrabold">Manfice</span>
+      </a>
+
+      <ul class="hidden items-center gap-8 text-sm font-medium lg:flex">
+        <li><a href="./index.html" class="hover:text-brand-700">Trang chủ</a></li>
+        <li><a href="./pricing.html" class="hover:text-brand-700">Bảng giá</a></li>
+        <li><a href="./contact.html" class="font-semibold text-brand-700" aria-current="page">Liên hệ</a></li>
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <a href="./contact.html" class="btn btn-primary hidden lg:inline-flex">Dùng thử miễn phí</a>
+        
+        <!-- Nút chuyển nền sáng/tối -->
+        <button
+          type="button"
+          id="nut-nen-toi"
+          class="grid h-10 w-10 place-items-center rounded-lg border border-line text-ink bg-surface-alt"
+          aria-pressed="false"
+          aria-label="Chuyển sang nền tối"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          class="grid h-10 w-10 place-items-center rounded-lg border border-line text-ink bg-surface-alt lg:hidden"
+          aria-label="Mở menu điều hướng"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <ul id="mobile-menu" class="container hidden flex-col gap-1 border-t border-line py-3 text-sm font-medium">
+      <li><a href="./index.html" class="block rounded-lg px-2 py-2 hover:bg-surface-alt">Trang chủ</a></li>
+      <li><a href="./pricing.html" class="block rounded-lg px-2 py-2 hover:bg-surface-alt">Bảng giá</a></li>
+      <li><a href="./contact.html" class="block rounded-lg px-2 py-2 hover:bg-surface-alt">Liên hệ</a></li>
+    </ul>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container py-16">
+
+    <!-- HERO -->
+    <section class="mb-16 text-center">
+      <p class="eyebrow">Liên hệ</p>
+      <h1 class="mt-3 text-4xl font-extrabold sm:text-5xl">Liên hệ với Manfice</h1>
+      <p class="mx-auto mt-4 max-w-xl text-muted">
+        Chúng tôi luôn sẵn sàng hỗ trợ bạn. Điền thông tin bên dưới, đội ngũ phản hồi trong 24 giờ.
+      </p>
+    </section>
+
+    <!-- FORM + INFO -->
+    <section class="grid gap-12 md:grid-cols-2">
+
+      <!-- FORM: 6 trường, 6 kiểu — text, email, tel, select, textarea, checkbox -->
+      <form class="card flex flex-col gap-5" novalidate>
+        <h2 class="text-xl font-bold">Gửi yêu cầu hỗ trợ</h2>
+
+        <div>
+          <label class="field-label" for="ho-ten">Họ tên <span class="text-red-600" aria-hidden="true">*</span></label>
+          <input class="field-input" id="ho-ten" name="hoTen" type="text" required autocomplete="name" aria-describedby="ho-ten-error" />
+          <p class="field-error" id="ho-ten-error" role="alert"></p>
+        </div>
+
+        <div>
+          <label class="field-label" for="email">Email <span class="text-red-600" aria-hidden="true">*</span></label>
+          <input class="field-input" id="email" name="email" type="email" required autocomplete="email" aria-describedby="email-error" />
+          <p class="field-error" id="email-error" role="alert"></p>
+        </div>
+
+        <div>
+          <label class="field-label" for="dien-thoai">Số điện thoại <span class="text-red-600" aria-hidden="true">*</span></label>
+          <input
+            class="field-input"
+            id="dien-thoai"
+            name="dienThoai"
+            type="tel"
+            required
+            pattern="0[0-9]{9}"
+            autocomplete="tel"
+            inputmode="numeric"
+            aria-describedby="dien-thoai-hint dien-thoai-error"
+          />
+          <p class="mt-1.5 text-xs text-muted" id="dien-thoai-hint">
+            Chúng tôi gọi qua số này, không nhắn tin quảng cáo.
+          </p>
+          <p class="field-error" id="dien-thoai-error" role="alert"></p>
+        </div>
+
+        <div>
+          <label class="field-label" for="loai-yeu-cau">Loại yêu cầu <span class="text-red-600" aria-hidden="true">*</span></label>
+          <select class="field-input" id="loai-yeu-cau" name="loaiYeuCau" required aria-describedby="loai-yeu-cau-error">
+            <option value="" selected disabled>Chọn loại yêu cầu</option>
+            <option value="ho-tro-ky-thuat">Hỗ trợ kỹ thuật</option>
+            <option value="tu-van-san-pham">Tư vấn sản phẩm</option>
+            <option value="bao-loi">Báo lỗi</option>
+            <option value="khac">Khác</option>
+          </select>
+          <p class="field-error" id="loai-yeu-cau-error" role="alert"></p>
+        </div>
+
+        <div>
+          <label class="field-label" for="noi-dung">Nội dung</label>
+          <textarea class="field-input" id="noi-dung" name="noiDung" rows="5" aria-describedby="noi-dung-hint"></textarea>
+          <p class="mt-1.5 text-xs text-muted" id="noi-dung-hint">Không bắt buộc — mô tả thêm để chúng tôi hỗ trợ nhanh hơn.</p>
+        </div>
+
+        <div class="flex items-start gap-2.5">
+          <input class="field-check" id="dong-y" name="dongY" type="checkbox" required aria-describedby="dong-y-error" />
+          <label for="dong-y" class="text-sm text-muted">
+            Tôi đồng ý để Manfice liên hệ theo thông tin đã cung cấp.
+            <span class="text-red-600" aria-hidden="true">*</span>
+          </label>
+        </div>
+        <p class="field-error -mt-3" id="dong-y-error" role="alert"></p>
+
+        <button type="submit" class="btn btn-primary mt-2 w-full">Gửi yêu cầu</button>
+      </form>
+
+      <!-- INFO -->
+      <div class="flex flex-col gap-6">
+        <div class="card">
+          <h3 class="mb-2 font-semibold">Email hỗ trợ</h3>
+          <a href="mailto:support@manfice.com" class="text-muted hover:text-brand-700">support@manfice.com</a>
+        </div>
+
+        <div class="card">
+          <h3 class="mb-2 font-semibold">Hotline</h3>
+          <a href="tel:19001234" class="text-muted hover:text-brand-700">1900 1234</a>
+        </div>
+
+        <div class="card">
+          <h3 class="mb-2 font-semibold">Địa chỉ</h3>
+          <address class="not-italic text-muted">123 Nguyễn Văn Cừ, Quận 5, TP.HCM</address>
+        </div>
+
+        <div class="card">
+          <h3 class="mb-2 font-semibold">Sau khi gửi yêu cầu?</h3>
+          <p class="text-muted">
+            Đội ngũ Manfice phản hồi trong vòng 24 giờ qua email hoặc điện thoại.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-line bg-surface-alt py-8 text-center text-sm text-muted">
+    © 2026 Manfice. All rights reserved.
+  </footer>
+
+  <!-- BUỔI 4 · Bài khởi động — nút lên đầu trang, hiện sau khi cuộn quá 400px -->
+  <button type="button" id="to-top" class="to-top" aria-label="Lên đầu trang">
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </svg>
+  </button>
+
+  <!-- Nạp kiểu module, đặt cuối <body>. Module tự hoãn tới khi HTML phân tích
+       xong nên KHÔNG cần DOMContentLoaded. -->
+  <script type="module" src="./js/main.js"></script>
+
+</body>
+</html>
